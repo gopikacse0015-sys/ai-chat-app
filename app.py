@@ -7,7 +7,10 @@ from google.genai import types
 
 # Load the API key securely
 load_dotenv()
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = st.secrets.get(
+    "GEMINI_API_KEY",
+    os.getenv("GEMINI_API_KEY", "")
+)
 
 st.set_page_config(
     page_title="AI Chat Application",
